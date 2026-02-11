@@ -12,3 +12,7 @@ pom.xml.asc
 .lein-failures
 .nrepl-port
 .cpcache/
+demo/.calva
+.clj-kondo/**
+!.clj-kondo/
+!.clj-kondo/config.edn
