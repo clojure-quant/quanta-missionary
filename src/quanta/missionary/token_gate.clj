@@ -9,10 +9,6 @@
         new-tokens (min capacity (+ tokens add))]
     (assoc st :tokens new-tokens :last-ts t)))
 
- ; tokens currently available tokens
- ; capacity: max tokens/second
- ; rate: tokens/second
-
 (defn bucket-delay-ms [st cost]
   (let [{:keys [tokens rate]} st
         deficit (max 0.0 (- cost tokens))]
@@ -21,8 +17,11 @@
 (defn consume [st cost]
   (update st :tokens (fn [x] (- x cost))))
 
-;"Wrap a requests flow, delaying items until tokens available."
 (defn token-bucket-gate
+  "Wrap a requests flow, delaying items until tokens available.
+   capacity: maximum available tokens (relevant for initial burst)
+   capacity: allowed max tokens/second
+   cost: token cost per request (default 1)"
   [requests {:keys [capacity rate cost]
              :or {capacity 20
                   rate 5
