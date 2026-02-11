@@ -32,16 +32,14 @@
               st (atom {:tokens capacity
                         :last-ts (System/currentTimeMillis)
                         :rate rate
-                        :capacity capacity})]
-          (println "st: " st)
-          (let [job (m/?> 1 requests)]
-            (println "got job: " job)
-            (let [st1 (refill @st)
-                  d   (bucket-delay-ms st1 cost)]
-              (when (pos? d)
-                (println "sleeping " d)
-                (m/? (m/sleep d)))
-              (let [st2 (consume (refill st1) cost)]
-                (println "next")
-                (reset! st st2)
-                job))))))
+                        :capacity capacity})
+              job (m/?> 1 requests)
+              st1 (refill @st)
+              d   (bucket-delay-ms st1 cost)]
+          (when (pos? d)
+                ;(println "sleeping " d)
+            (m/? (m/sleep d)))
+          (let [st2 (consume (refill st1) cost)]
+                ;(println "next")
+            (reset! st st2)
+            job))))

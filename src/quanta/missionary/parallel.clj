@@ -2,11 +2,11 @@
   (:require
    [missionary.core :as m]))
 
-(defn- limit-task [sem blocking-task]
+(defn limit-task [sem blocking-task]
   (m/sp
    (m/holding sem (m/? blocking-task))))
 
-(defn- run-tasks
+(defn run-tasks
   "runs multiple tasks"
   [tasks parallel-nr]
   ; from: https://github.com/leonoel/missionary/wiki/Rate-limiting#bounded-blocking-execution

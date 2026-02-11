@@ -1,11 +1,15 @@
 (ns quanta.missionary
   (:require
+   [missionary.core :as m]
    [quanta.missionary.token-gate]
-   [quanta.missionary.backoff]))
+   [quanta.missionary.backoff]
+   [quanta.missionary.rest-import]))
 
 (def token-bucket-gate quanta.missionary.token-gate/token-bucket-gate)
 
 (def backoff quanta.missionary.backoff/backoff)
+
+(def rest-import quanta.missionary.rest-import/rest-import)
 
 (defn forever [task]
   (m/ap (m/? (m/?> (m/seed (repeat task))))))

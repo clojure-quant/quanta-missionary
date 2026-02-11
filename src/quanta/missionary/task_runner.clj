@@ -42,7 +42,7 @@
    can be stopped with (stop! id) 
    useful for working in the repl with flows."
   [file-name id f]
-  (let [log-task (m/reduce (fn [r v]
+  (let [log-task (m/reduce (fn [_r v]
                              (let [s (with-out-str (println v))]
                                (spit file-name s :append true))
                              nil)
