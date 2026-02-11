@@ -8,7 +8,7 @@
    (try
      (let [data (m/? (download-fn ctx job-opts))]
        (when store-fn
-         (store-fn ctx job-opts data))
+         (m/? (store-fn ctx job-opts data)))
        {:opts job-opts
         :data (if summary-fn
                 (summary-fn data)
