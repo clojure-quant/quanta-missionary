@@ -3,7 +3,8 @@
    [missionary.core :as m]
    [quanta.missionary.token-gate]
    [quanta.missionary.backoff]
-   [quanta.missionary.rest-import]))
+   [quanta.missionary.rest-import]
+   [quanta.missionary.parallel]))
 
 (def token-bucket-gate quanta.missionary.token-gate/token-bucket-gate)
 
@@ -20,3 +21,6 @@
   ; so each mixed flow has its own process
   [& flows]
   (m/ap (m/?> (m/?> (count flows) (m/seed flows)))))
+
+(def run-parallel
+  quanta.missionary.parallel/run-parallel)

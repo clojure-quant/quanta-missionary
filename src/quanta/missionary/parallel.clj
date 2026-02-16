@@ -6,7 +6,7 @@
   (m/sp
    (m/holding sem (m/? blocking-task))))
 
-(defn run-tasks
+(defn run-parallel
   "runs multiple tasks"
   [tasks parallel-nr]
   ; from: https://github.com/leonoel/missionary/wiki/Rate-limiting#bounded-blocking-execution
