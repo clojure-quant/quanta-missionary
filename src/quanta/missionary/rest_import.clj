@@ -26,7 +26,8 @@
   (-> s
       (update :success (fn [n] (if (:data result) (inc n) n)))
       (update :error (fn [n] (if (:error result) (inc n) n)))
-      (update :error-details (fn [n] (if (:error result) (conj n (:opts result)) n)))))
+      (update :error-details (fn [n] (if (:error result) 
+                                       (conj n (assoc (:opts result) :error (ex-message (:error result)))) n)))))
 
 (defn rest-import [ctx {:keys [tasks-opts download-fn store-fn
                                capacity rate cost
