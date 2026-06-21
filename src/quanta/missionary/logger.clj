@@ -53,11 +53,8 @@
   (assert this "start-log-flow-to-logger needs this")
   (assert f "start-log-flow-to-logger needs f")
   (let [logging-f (m/ap
-                   (loop []
-                     (m/amb
-                      (let [v (m/?> f)]
-                        (m/? (m/via m/blk (log this v)))
-                        v)
-                      (recur))))
+                   (let [v (m/?> f)]
+                     (m/? (m/via m/blk (log this v)))
+                     v))
         log-t (m/reduce (fn [_r _v] nil) nil logging-f)]
     (log-t #(println "flow-logger done" %) #(println "flow-logger error" %))))
