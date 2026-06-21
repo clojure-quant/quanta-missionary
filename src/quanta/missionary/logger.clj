@@ -38,12 +38,7 @@
                 (.getParentFile)
                 (.getName))]
     (fs/create-dirs dir)
-    ((flow-logging-task filename console? log-f) prn prn))
-)
-
-
-
-
+    ((flow-logging-task filename console? log-f) prn prn)))
 
 (defn create-logger [filename console?]
   (let [log-a (atom "")
