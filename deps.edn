@@ -1,8 +1,8 @@
 {:paths ["src"]
  :deps
  {org.clojure/clojure    {:mvn/version "1.12.4"}
-  missionary/missionary {:mvn/version "b.46"}
-  }
+  babashka/fs {:mvn/version "0.5.33"}
+  missionary/missionary {:mvn/version "b.46"}}
  :aliases
  {:test {:extra-paths ["test"]
          :extra-deps {io.github.cognitect-labs/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"

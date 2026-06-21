@@ -5,7 +5,7 @@
 
 ;; test manually logging to a logger
 
-(def l (create-logger "test-log.txt" false))
+(def l (create-logger "log/test-log.txt" false))
 
 (log l "hello")
 (log l "hello")
@@ -16,7 +16,7 @@
 
 ;; test logging a flow to a logger
 
-(def l2 (create-logger "test-log2.txt" true))
+(def l2 (create-logger "log/test-log2.txt" true))
 
 (def f (m/seed [1 2 3 4 5 6 7 8 9 10]))
 

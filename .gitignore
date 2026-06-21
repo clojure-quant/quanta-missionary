@@ -18,5 +18,4 @@ demo/.calva
 !.clj-kondo/config.edn
 .calva/
 .lsp
-demo/test-log.txt
-demo/test-log2.txt
+demo/log/

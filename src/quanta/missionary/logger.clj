@@ -1,5 +1,6 @@
 (ns quanta.missionary.logger
   (:require
+   [babashka.fs :as fs]
    [missionary.core :as m]))
 
 (defn time-buffered [duration-ms flow]
@@ -33,7 +34,16 @@
     (m/reduce (fn [_r _v] nil) nil logging-f)))
 
 (defn start-logging-flow [filename console? log-f]
-  ((flow-logging-task filename console? log-f) prn prn))
+  (let [dir (-> (fs/file filename)
+                (.getParentFile)
+                (.getName))]
+    (fs/create-dirs dir)
+    ((flow-logging-task filename console? log-f) prn prn))
+)
+
+
+
+
 
 (defn create-logger [filename console?]
   (let [log-a (atom "")
