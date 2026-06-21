@@ -22,7 +22,7 @@
   [& flows]
   (m/ap (m/?> (m/?> (count flows) (m/seed flows)))))
 
-(defn mix-tagged 
+(defn mix-tagged
   "flow map is a map whose keywords are identitifiers for the flows
    (the values). the mixed flow will emit vectors, the first item
    in the vector is the keyword, the second item is the value of 

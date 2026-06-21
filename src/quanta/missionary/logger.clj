@@ -1,6 +1,5 @@
 (ns quanta.missionary.logger
   (:require
-   [tick.core :as t]
    [missionary.core :as m]))
 
 (defn time-buffered [duration-ms flow]
