@@ -20,6 +20,7 @@
   ; will generate (count flows) processes, 
   ; so each mixed flow has its own process
   [& flows]
+  (assert (every? some? flows) "all flows must be non-nil")
   (m/ap (m/?> (m/?> (count flows) (m/seed flows)))))
 
 (defn mix-tagged
@@ -28,6 +29,10 @@
    in the vector is the keyword, the second item is the value of 
    the flow."
   [flow-map]
+  (assert flow-map "flow-map is required")
+  (assert (map? flow-map) "flow-map needs to be a map")
+  (assert (every? some? (vals flow-map)) "all flow-map values must be non-nil")
+
   (let [mapped-flows (map (fn [[k f]]
                             (m/ap (let [data (m/?> f)]
                                     [k data]))) flow-map)]

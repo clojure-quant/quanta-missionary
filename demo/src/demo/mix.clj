@@ -39,6 +39,11 @@
 
 (start-printer tagged-mixed-f)
 
+;; test asserts
+
+(def mixed-simple-nil (mix i-f k-f nil))
+
+(def tagged-mixed-f-il (mix-tagged {:k k-f :i i-f :j nil}))
 
 
 
