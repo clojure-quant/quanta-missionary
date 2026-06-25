@@ -64,21 +64,20 @@
   :order-state [{:order/id 3, :side :buy, :qty 300, :status :filled}
                 {:order/id 4, :side :buy, :qty 400, :status :created}]}]
 
+[{:trade [{:buy 50} {:buy 50}],
+  :order-state [{:order/id 1, :side :buy, :qty 100, :status :created}]}
 
-[{:trade [{:buy 50} {:buy 50}], 
-  :order-state [{:order/id 1, :side :buy, :qty 100, :status :created}]} 
- 
- {:trade [{:buy 50} {:buy 150}]} 
- 
- {:trade [], 
-  :order-state [{:order/id 1, :side :buy, :qty 100, :status :filled} 
+ {:trade [{:buy 50} {:buy 150}]}
+
+ {:trade [],
+  :order-state [{:order/id 1, :side :buy, :qty 100, :status :filled}
                 {:order/id 2, :side :buy, :qty 200, :status :created}]}
- {:trade [{:sell 250} {:sell 50}], 
+ {:trade [{:sell 250} {:sell 50}],
   :order-state [{:order/id 2, :side :buy, :qty 200, :status :filled}
-                {:order/id 3, :side :buy, :qty 300, :status :created}]} 
- 
- {:trade [], 
-  :order-state [{:order/id 3, :side :buy, :qty 300, :status :filled} 
+                {:order/id 3, :side :buy, :qty 300, :status :created}]}
+
+ {:trade [],
+  :order-state [{:order/id 3, :side :buy, :qty 300, :status :filled}
                 {:order/id 4, :side :buy, :qty 400, :status :created}]}
- 
+
  {:trade [{:buy 400}]}]
